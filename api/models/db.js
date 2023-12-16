@@ -20,14 +20,8 @@ mongoose.connection.on("disconnected", () => {
     console.log(`Mongoose bağlantısı kesildi`)
 })
 
-function close(message, callbackFn) {
-    mongoose.connection.close()
-    console.log(`Mongoose kapatıldı | ${message}`)
-    callbackFn()
-}
-
 process.on("SIGINT", () => {
-    close("Uygulama kapatıldı", () => {
-        process.exit(0)
-    })
+    mongoose.connection.close()
+    console.log("Mongoose kapatıldı (SIGINT)")
+    process.exit(0)
 })
