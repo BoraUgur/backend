@@ -1,10 +1,10 @@
 var mongoose = require("mongoose");
 
 /* Local */
-// const dbURI = "mongodb://localhost:27017/mekanbul";
+const dbURI = "mongodb://localhost:27017/mekanbul";
 
 /* Remote */
-const dbURI = 'mongodb+srv://boraugur47:pJ2WmF1A1zr7Wyuf@mekanbul.fdcluux.mongodb.net/?retryWrites=true&w=majority'
+// const dbURI = 'mongodb+srv://boraugur47:pJ2WmF1A1zr7Wyuf@mekanbul.fdcluux.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(dbURI)
 

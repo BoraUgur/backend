@@ -7,16 +7,22 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 require('./api/models/db');
+require('./api/models/venue');
+
+var apiRouter = require('./api/routes/index')
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app
+    .use('/api', apiRouter)
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+    .use(express.static(path.join(__dirname, 'public')))
+    .use(logger('dev'))
+    .use(express.json())
+    .use(express.urlencoded({ extended: false }))
+    .use(cookieParser())
+
+    .use('/', indexRouter)
+    .use('/users', usersRouter)
 
 module.exports = app;
